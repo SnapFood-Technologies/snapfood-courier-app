@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "./src",
+    "paths": {
+      "_styles": ["styles"],
+      "_atoms": ["components/atoms"],
+      "_molecules": ["components/molecules/"],
+      "_organisms": ["components/organisms"],
+      "_assets": ["assets"],
+      "_navigators": ["_navigators"],
+      "_scenes": ["scenes"],
+      "_redux": ["redux"],
+      "_constants": ["constants"],
+      "_components": ["components"],
+      "_service": ["service"],
+      "_utils": ["utils"]
+    }
+  }
+}
