@@ -12,6 +12,7 @@ import CourierAvailability from './courier-availability';
 import CourierRequirements from './courier-requirements';
 import DrivingHours from './driving-hours';
 import AddBankScreen from './addbank-screen';
+import TexInfoScreen from './texinfo-screen';
 
 export {
   ProfileScreen,
@@ -28,4 +29,5 @@ export {
   CourierRequirements,
   DrivingHours,
   AddBankScreen,
+  TexInfoScreen,
 };

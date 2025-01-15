@@ -1,42 +1,71 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-platform :ios, '12.4'
-prepare_react_native_project!
+platform :ios, '10.0'
 
-# Explicitly specify the version of SDWebImageWebPCoder
-pod 'SDWebImageWebPCoder', '~> 0.8.4'
-pod 'RCT-Folly', :podspec => '../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec'
+source 'https://github.com/CocoaPods/Specs.git'
 
 target 'rider' do
-  config = use_native_modules!
-
   # React Native Maps dependencies
   rn_maps_path = '../node_modules/react-native-maps'
   pod 'react-native-google-maps', :path => rn_maps_path
   pod 'GoogleMaps'
   pod 'Google-Maps-iOS-Utils'
 
-  use_react_native!(
-    :path => config[:reactNativePath],
-    :hermes_enabled => false,
-    :fabric_enabled => false,
-    :flipper_configuration => FlipperConfiguration.enabled,
-    :app_path => "#{Pod::Config.instance.installation_root}/.."
-  )
+  config = use_native_modules!
+
+  use_react_native!(:path => config["reactNativePath"])
+
 
   target 'riderTests' do
     inherit! :complete
     # Pods for testing
   end
 
-  post_install do |installer|
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable these next few lines.
+  use_flipper!({ 'Flipper-Folly' => '2.5.3', 'Flipper' => '0.87.0', 'Flipper-RSocket' => '1.3.1' })
+  # use_flipper!
+  # post_install do |installer|
+  #   flipper_post_install(installer)
+  # end
+end
+
+target 'rider-tvOS' do
+  # Pods for rider-tvOS
+
+  target 'rider-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+end
+
+post_install do |installer|
+  # Ensure the react_native_post_install hook is available
+  if defined?(react_native_post_install)
     react_native_post_install(installer)
-    installer.pods_project.targets.each do |target|
-      target.build_configurations.each do |config|
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.4'
+  end
+
+  `sed -i -e  $'s/__IPHONE_10_0/__IPHONE_15_0/' #{installer.sandbox.root}/RCT-Folly/folly/portability/Time.h`
+
+  # Adjust IPHONEOS_DEPLOYMENT_TARGET for all targets
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.4'
+    end
+  end
+
+  # Modify compiler flags for the BoringSSL-GRPC target
+  installer.pods_project.targets.each do |target|
+    if target.name == 'BoringSSL-GRPC'
+      target.source_build_phase.files.each do |file|
+        if file.settings && file.settings['COMPILER_FLAGS']
+          flags = file.settings['COMPILER_FLAGS'].split
+          flags.reject! { |flag| flag == '-GCC_WARN_INHIBIT_ALL_WARNINGS' }
+          file.settings['COMPILER_FLAGS'] = flags.join(' ')
+        end
       end
     end
   end

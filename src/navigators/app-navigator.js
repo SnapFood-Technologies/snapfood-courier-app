@@ -24,7 +24,8 @@ import {
   DrivingHours,
   RequestDetailScreen,
   AddBankScreen,
-  LocationPermissionScreen
+  LocationPermissionScreen,
+  TexInfoScreen
 } from '_scenes';
 const Stack = createStackNavigator();
 const AppNavigator = () => {
@@ -51,6 +52,7 @@ const AppNavigator = () => {
       <Stack.Screen name="Comments" component={CommentScreen} />
       <Stack.Screen name="FullMap" component={FullmapScreen} />
       <Stack.Screen name="LocationPermissionScreen" component={LocationPermissionScreen} />
+      <Stack.Screen name="TexInfoScreen" component={TexInfoScreen} />
       <Stack.Screen
         name="CourierAvailability"
         component={CourierAvailability}

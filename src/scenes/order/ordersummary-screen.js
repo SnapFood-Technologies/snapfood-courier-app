@@ -24,6 +24,7 @@ import Config from 'react-native-config';
 import OrderDeliveredModal from 'components/modals/OrderDeliveredModal';
 // svgs
 import Svg_calendar from 'assets/svgs/earning/calendar.svg';
+import CalendarOrderModal from 'components/modals/CalendarOrderModal';
 
 const OrderSummaryScreen = (props) => {
   const [spinner, setSpinner] = useState(false);
@@ -40,6 +41,7 @@ const OrderSummaryScreen = (props) => {
   const [currentOrders, setCurrentOrders] = useState([]);
   const [pastOrders, setPastOrders] = useState([]);
   const [shouldFetch, setShouldFetch] = useState(true);
+  const [isOrderCalendarModal, showOrderCalendarModal] = useState(false);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -146,6 +148,7 @@ const OrderSummaryScreen = (props) => {
     setOverlayVisible(false);
     setShouldFetch(true);
   };
+
   return (
     <View style={Globals.flex_1}>
       <LoadingSpinner visible={spinner} />
@@ -221,7 +224,7 @@ const OrderSummaryScreen = (props) => {
         style={[
           Globals.container,
           Globals.padding_horiz_20,
-          {paddingBottom: 0, marginTop: 20},
+          {paddingBottom: 0, marginTop: selectedIndex === 1 ? 20 : 10},
         ]}>
         {selectedIndex === 1 && (
           <TouchableOpacity
@@ -237,6 +240,7 @@ const OrderSummaryScreen = (props) => {
             <Svg_calendar />
           </TouchableOpacity>
         )}
+       
         <View style={[Globals.flex_1]}>
           <FlatList
             contentContainerStyle={Globals.flex_grow_1}
@@ -245,6 +249,11 @@ const OrderSummaryScreen = (props) => {
             keyExtractor={keyExtractor}
             renderItem={renderItem}
             ListEmptyComponent={<EmptyComponent text={CONSTANTS.NO_ORDER} />}
+            ListHeaderComponent={<View style={{width: '100%', marginBottom: 12, alignItems: 'flex-end', justifyContent: 'center', paddingTop: 12}}>  
+            <TouchableOpacity style={{marginRight: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}} onPress={() => showOrderCalendarModal(true)}>
+               <Svg_calendar style={{width: Spacing.SCALE_24, height: Spacing.SCALE_24}} />
+             </TouchableOpacity>
+           </View>}
             showsVerticalScrollIndicator={false}
           />
         </View>
@@ -257,6 +266,12 @@ const OrderSummaryScreen = (props) => {
         }}
         onClose={() => {
           showConfirmModal(false);
+        }}
+      />
+      <CalendarOrderModal
+        showModal={isOrderCalendarModal}
+        onClose={() => {
+          showOrderCalendarModal(false);
         }}
       />
     </View>

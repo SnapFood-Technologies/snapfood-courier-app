@@ -23,6 +23,8 @@ const AddBankScreen = ({ navigation }) => {
   const [ifsc_code, setIfscCode] = useState('');
   const [other, setOther] = useState('');
   const [account_type, setAccountType] = useState('Saving');
+  const [iban_number, setIbanNumber] = useState('');
+  const [swift_code, setSwiftCode] = useState('');
 
   const [spinner, setSpinner] = useState(false);
   const onSubmit = () => {
@@ -47,7 +49,7 @@ const AddBankScreen = ({ navigation }) => {
                 value={name}
                 onChangeText={setName}
               />
-              <View style={{ marginBottom: 20, }}   >
+              {/* <View style={{ marginBottom: 20, }}   >
                 <View style={{ width: '100%', paddingHorizontal: 7, }}>
                   <Text style={[Typography.POPPINS_MEDIUM_LIGHTGRAY_12, { color: '#9D9D9D' }]}>Account type</Text>
                   <View style={[Globals.h_center, { width: '100%', marginVertical: 12, }]}>
@@ -62,20 +64,34 @@ const AddBankScreen = ({ navigation }) => {
                   </View>
                   <View style={{ width: '100%', height: 1, backgroundColor: '#aaa' }} />
                 </View>
-              </View>
-              <CustomInput
+              </View> */}
+              {/* <CustomInput
                 editable
                 label="Account Number"
                 icon={null}
                 value={accountNumber}
                 onChangeText={setAccountNumber}
-              />
+              /> */}
               <CustomInput
+                editable
+                label="IBAN Number"
+                icon={null}
+                value={iban_number}
+                onChangeText={setIbanNumber}
+              />
+              {/* <CustomInput
                 editable
                 label="IFSC Code"
                 icon={null}
                 value={ifsc_code}
                 onChangeText={setIfscCode}
+              /> */}
+              <CustomInput
+                editable
+                label="Swift Code"
+                icon={null}
+                value={swift_code}
+                onChangeText={setSwiftCode}
               />
               <CustomInput
                 editable

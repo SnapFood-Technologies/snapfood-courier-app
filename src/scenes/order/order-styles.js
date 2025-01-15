@@ -162,4 +162,9 @@ export const OrderStyles = StyleSheet.create({
     borderBottomWidth: 1,
     paddingBottom: 6, 
   },
+  calenderIcon: {
+    width: "100%",
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+  },
 });

@@ -36,26 +36,26 @@ const ProfileScreen = (props) => {
       title: CONSTANTS.MENU_PERSONAL,
       route: 'EditInfo',
     },
-    // {
-    //   image: COURIER_REQUIREMENTS_ICON,
-    //   title: CONSTANTS.COURIER_REQUIREMENT,
-    //   route: 'CourierRequirements',
-    // },
-    // {
-    //   image: COURIER_AVAILABILITY_ICON,
-    //   title: CONSTANTS.COURIER_AVAILABILITY,
-    //   route: 'CourierAvailability',
-    // },
-    // {
-    //   image: COURIER_DRIVING_HOURS_ICON,
-    //   title: CONSTANTS.DRIVING_HOURS,
-    //   route: 'DrivingHours',
-    // },
-    // {
-    //   image: BANK_ICON,
-    //   title: CONSTANTS.MENU_BANK,
-    //   route: 'BankAccount',
-    // },
+    {
+      image: COURIER_REQUIREMENTS_ICON,
+      title: CONSTANTS.COURIER_REQUIREMENT,
+      route: 'CourierRequirements',
+    },
+    {
+      image: COURIER_AVAILABILITY_ICON,
+      title: CONSTANTS.COURIER_AVAILABILITY,
+      route: 'CourierAvailability',
+    },
+    {
+      image: COURIER_DRIVING_HOURS_ICON,
+      title: CONSTANTS.DRIVING_HOURS,
+      route: 'DrivingHours',
+    },
+    {
+      image: BANK_ICON,
+      title: CONSTANTS.MENU_BANK,
+      route: 'BankAccount',
+    },
     {
       image: WALLET_ICON,
       title: CONSTANTS.MENU_WALLET,
@@ -65,6 +65,11 @@ const ProfileScreen = (props) => {
       image: RIDER_ICON,
       title: CONSTANTS.MENU_SEARCH,
       route: 'RiderFriend',
+    },
+    {
+      image: BANK_ICON,
+      title: CONSTANTS.MENU_TEX_INFO,
+      route: 'TexInfoScreen',
     },
     {
       image: PASSWORD_ICON,

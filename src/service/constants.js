@@ -43,6 +43,7 @@ export const MENU_WALLET = 'My Wallet';
 export const MENU_SEARCH = 'Search Couriers';
 export const MENU_PASSWORD = 'Change Password';
 export const MENU_REVIEWS = 'View Reviews';
+export const MENU_TEX_INFO = 'Tex Info';
 export const MENU_ADMIN = 'Admin Support';
 export const MENU_LOGOUT = 'Log out';
 
