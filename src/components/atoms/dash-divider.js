@@ -5,6 +5,7 @@ import {Colors, Spacing} from '_styles';
 const styles = StyleSheet.create({
   dash: {
     flex: 1,
+    paddingVertical: 2,
     marginVertical: Spacing.SCALE_8,
   },
 });

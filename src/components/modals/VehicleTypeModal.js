@@ -32,22 +32,22 @@ const VehicleTypeModal = ({ title, showModal, curValue, onSelect, onClose}) => {
                     <Text style={[styles.closeBtnTxt]}>Close</Text>
                 </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={()=>onSelect('Car')} style={[styles.row_center, { width: '100%', height: 50 }]}>
-                {curValue == 'Car' ? <Svg_car_active /> : <Svg_car_inactive />}
+            <TouchableOpacity activeOpacity={0.8} onPress={()=>onSelect('Car')} style={[styles.row_center, { width: '100%', height: 50 }]}>
+                {curValue == 'Car' ? <View style={styles.optionIcon}><Svg_car_active /></View> : <View style={styles.optionIcon}><Svg_car_inactive /></View>}
                 <Text style={[styles.modalBtnTxt, {color: (curValue == 'Car' ? Colors.LIGHTBLACK : Colors.GRAY_600) }]}>Car</Text>
-                {curValue == 'Car' && <Svg_checkmark />} 
+                {curValue == 'Car' && <View style={styles.checkUnCheck}><Svg_checkmark /></View>} 
             </TouchableOpacity>
             <View style={styles.divider} />
-            <TouchableOpacity onPress={()=>onSelect('Bike')} style={[styles.row_center, { width: '100%', height: 50 }]}>
-                {curValue == 'Bike' ? <Svg_bike_active /> : <Svg_bike_inactive />} 
+            <TouchableOpacity activeOpacity={0.8} onPress={()=>onSelect('Bike')} style={[styles.row_center, { width: '100%', height: 50 }]}>
+                {curValue == 'Bike' ? <View style={styles.optionIcon}><Svg_bike_active /></View> : <View style={styles.optionIcon}><Svg_bike_inactive /></View>} 
                 <Text style={[styles.modalBtnTxt, {color: (curValue == 'Bike' ? Colors.LIGHTBLACK : Colors.GRAY_600) }]}>Bike</Text>
-                {curValue == 'Bike' && <Svg_checkmark />} 
+                {curValue == 'Bike' && <View style={styles.checkUnCheck}><Svg_checkmark /></View>} 
             </TouchableOpacity> 
             <View style={styles.divider} />
-            <TouchableOpacity onPress={()=>onSelect('Motobike')} style={[styles.row_center, { width: '100%', height: 50 }]}>
-                {curValue == 'Motobike' ? <Svg_motobike_active /> : <Svg_motobike_inactive />} 
+            <TouchableOpacity activeOpacity={0.8} onPress={()=>onSelect('Motobike')} style={[styles.row_center, { width: '100%', height: 50 }]}>
+                {curValue == 'Motobike' ? <View style={styles.optionIcon}><Svg_motobike_active /></View> : <View style={styles.optionIcon}><Svg_motobike_inactive /></View>} 
                 <Text style={[styles.modalBtnTxt, {color: (curValue == 'Motobike' ? Colors.LIGHTBLACK : Colors.GRAY_600) }]}>Motobike</Text>
-                {curValue == 'Motobike' && <Svg_checkmark />} 
+                {curValue == 'Motobike' && <View style={styles.checkUnCheck}><Svg_checkmark /></View>} 
             </TouchableOpacity> 
         </View>
     </Modal>
@@ -62,6 +62,8 @@ const styles = StyleSheet.create({
     divider: {
         width: '100%', height: 0, borderRadius: 12, borderWidth: 1, borderColor: '#D4D4D4', borderStyle: 'dashed',
     },
+    checkUnCheck: { height: 18, width: 18,},
+    optionIcon: { height: 24, width: 24, marginRight: 10 },
     closeBtnTxt: { fontSize: 12, color: '#000', fontFamily: Typography.FONT_FAMILY_MONTSERRAT_SEMIBOLD },
 })
 export default VehicleTypeModal;

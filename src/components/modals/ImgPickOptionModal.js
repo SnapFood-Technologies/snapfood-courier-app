@@ -30,19 +30,19 @@ const ImgPickOptionModal = ({ title, showModal, onCapture, onImageUpload, onClos
                 </TouchableOpacity>
             </View>
             <TouchableOpacity onPress={onCapture} style={[styles.row_center, { width: '100%', height: 50 }]}>
-                <Svg_camera />
+                <View style={styles.imageIcon}><Svg_camera /></View>
                 <Text style={styles.modalBtnTxt}>Camera</Text>
             </TouchableOpacity>
             <View style={styles.divider} />
             <TouchableOpacity onPress={onImageUpload} style={[styles.row_center, { width: '100%', height: 50 }]}>
-                <Svg_image />
+                <View style={styles.imageIcon}><Svg_image /></View>
                 <Text style={styles.modalBtnTxt}>Gallery</Text>
             </TouchableOpacity>
             { onFilePick && <View style={styles.divider} />}
             {
                 onFilePick &&
                 <TouchableOpacity onPress={onFilePick} style={[styles.row_center, { width: '100%', height: 50 }]}>
-                    <Svg_file />
+                    <View style={styles.imageIcon}><Svg_file /></View>
                     <Text style={styles.modalBtnTxt}>File</Text>
                 </TouchableOpacity>
             }
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     modalTitle: { textAlign: 'center', fontSize: 20, fontFamily: Typography.FONT_FAMILY_MONTSERRAT_BOLD, color: '#000000', },
     titleRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 },
     modalBtnTxt: { flex: 1, marginLeft: 8, fontSize: 14, fontFamily: Typography.FONT_FAMILY_MONTSERRAT_SEMIBOLD, color: '#000000' },
+    imageIcon: { height: 24, width: 24, marginRight: 10 },
     divider: {
         width: '100%', height: 0, borderRadius: 12, borderWidth: 1, borderColor: '#D4D4D4', borderStyle: 'dashed',
     },

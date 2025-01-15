@@ -33,6 +33,14 @@ const styles = StyleSheet.create({
     fontFamily: Typography.FONT_FAMILY_POPPINS_MEDIUM,
     fontSize: 12,
   },
+  checked: {
+    height: 22,
+    width: 22,
+  },
+  unchecked: {
+    height: 24,
+    width: 24,
+  }
 });
 const RiderReqItem = ({ data }) => {
   return (
@@ -41,7 +49,7 @@ const RiderReqItem = ({ data }) => {
         <Text style={styles.title}>{data.title}</Text>
         <Text style={[styles.value, { color: data.checked == true ?  Colors.PRIMARY : Colors.GRAY_600 }]}>{data.value}</Text>
       </View>
-      {data.checked == true ? <Svg_checked /> : <Svg_unchecked />}
+      {data.checked == true ? <View style={styles.checked}><Svg_checked/></View> : <View style={styles.unchecked}><Svg_unchecked /></View>}
     </View>
   );
 };
