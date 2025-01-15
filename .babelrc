@@ -1,0 +1,25 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "cwd": "babelrc",
+        "root": ["./src"],
+        "alias": {
+          "_assets": "./src/assets",
+          "_components": "./src/components",
+          "_atoms": "./src/components/atoms",
+          "_molecules": "./src/components/molecules",
+          "_organisms": "./src/components/organisms",
+          "_navigators": "./src/navigators",
+          "_scenes": "./src/scenes",
+          "_styles": "./src/styles",
+          "_redux": "./src/redux",
+          "_constants": "./src/constants",
+          "_service": "./src/service",
+          "_utils": "./src/utils"
+        }
+      }
+    ]
+  ]
+}
